@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous">
+    </script> -->
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <div class="container" >
+            <h1>Danh mục các bài báo</h1>
+            <button onclick="document.location='/add'" class="button button1">Thêm báo mới</button>
+            <form id="delete" method="POST" action ="/delete" enctype="multipart/form-data" >     
+                <table style="width:1000px ">
+                    <thead>
+                    <tr>
+                        <th>STT</th>
+                        <th>Tên bài báo</th>
+                        <th>Nhóm tác giả</th>
+                        <th>Chỉ só ISBN</th>
+                        <th>Số trang</th>
+                        <th>Năm xuất bản</th>
+                        <th>Hinh anh</th>
+                        <th>Chọn</th>
+                    </tr>
+                    </thead>
+                    <% for (let i = 0; i < baiBaos.length; i++){ %>
+                    <tr>
+                        <td><%=baiBaos[i].ma_bao%></td>
+                        <td><%=baiBaos[i].ten_bao%></td>
+                        <td><%=baiBaos[i].ten_tacgia%></td>
+                        <td><%=baiBaos[i].isbn%></td>
+                        <td><%=baiBaos[i].so_trang%></td>
+                        <td><%=baiBaos[i].nam_xb%></td>
+                        <td><img weight ="50px" height="50px" src="<%=baiBaos[i].image%>" /></td>
+                        <td><input type="checkbox" name="<%=baiBaos[i].ma_bao%>"/></td> 
+                    </tr>
+                    <% } %>
+                </table>
+                <button type="submit" class="button button2" onclick="confirmation()">Xóa</button><hr>
+                <a href="/add">Trang Nhập thông tin</a>
+            </form>
+    </div>
+</body>
+<script>
+    function confirmation(){
+      var result = confirm("Bạn có chắc chắn muốn xóa?");
+      if(result){
+        console.log("Đã xóa")
+      }
+    }
+  </script>
+</html>
