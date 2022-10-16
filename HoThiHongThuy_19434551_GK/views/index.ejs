@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Danh mục các sản phẩm</h1>
+        <button onclick="document.location='/add'" class="button button1">Thêm </button>
+        <form id="delete" method="POST" action="/delete" enctype="multipart/form-data">
+            <table style="width:1000px ">
+                <thead>
+                    <tr>
+                        <th>STT</th>
+                        <th>Tên san pham</th>
+                        <th>DVT</th>
+                        <th>Gía</th>
+                        <th>Chi tiết</th>
+                        <th>Chọn</th>
+                    </tr>
+                </thead>
+
+                <% for (let i = 0; i < sanPhams.length; i++){ %>
+                    <tr>
+                        <td>
+                            <%=sanPhams[i].ma_sp%>
+                        </td>
+                        <td>
+                            <%=sanPhams[i].ten_sp%>
+                        </td>
+                        <td>
+                            <%=sanPhams[i].dvt%>
+                        </td>
+                        <td>
+                            <%=sanPhams[i].gia%>
+                        </td>
+                        <td><img weight="50px" height="50px" src="<%=sanPhams[i].image%>" /></td>
+                        <td><input type="checkbox" name="<%=sanPhams[i].ma_sp%>" /></td>
+                    </tr>
+                    <% } %>
+            </table>
+            <button type="submit" class="button button2" onclick="confirmation()">Xóa</button>
+            <hr>
+        </form>
+    </div>
+</body>
+<script>
+    function confirmation() {
+        var result = confirm("Bạn có chắc chắn muốn xóa?");
+        if (result) {
+            console.log("Đã xóa")
+        }
+    }
+</script>
+
+</html>

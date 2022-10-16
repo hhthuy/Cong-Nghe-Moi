@@ -1,0 +1,8 @@
+Project đã xóa thư viện nodemon
+--> Clone về down lại:
+npm install express 
+npm install nodemon
+npm install ejs
+npm install aws-sdk
+npm install multer
+--> Run: node index.js

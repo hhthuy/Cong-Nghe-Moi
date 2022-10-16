@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thêm bài báo</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+    <div class="w-50" style="margin:auto ;">
+        <h1>Nhập thông tin Bài Báo</h1>
+        <form action="/" method="post" id="form" enctype="multipart/form-data" style="width:100%; border: 10px;">
+            <input type="text" name="ma_sp" id="ma_sp" placeholder="Nhập mã" /><br>
+            <input type="text" name="ten_sp" id="ten_sp" placeholder="Nhập tên" /><br>
+            <input type="text" name="dvt" id="dvt" placeholder="Nhap đơn vị tính" /><br>
+            <input type="text" name="gia" id="gia" placeholder="Nhaập giá" /><br>
+            <input type="text" name="image" placeholder="Link hình ảnh" /><br>
+            <button type="submit" class="button button1" onclick=" return validateForm();">Thêm</button>
+            <hr>
+            <a href="/">Trở về Trang Danh Mục</a>
+        </form>
+    </div>
+
+</body>
+
+<script>
+    function validateForm() {
+        let ma = document.getElementById('ma_sp').value;
+        console.log(ma);
+        if (ma == "") {
+            alert("Mã  không được để trống");
+            return false;
+        }
+        let dv = document.getElementById('dvt').value;
+        console.log(dv);
+        var regdv = /^[A-Za-z]/;
+        if (!regdv.test(dv)) {
+            alert("Don vi Phai la chữ");
+            return false;
+        }
+        let giaban = document.getElementById('gia').value;
+        console.log(giaban);
+        if (giaban <= 0 || giaban == "") {
+            alert("Gía Không được để trống và gia > 0");
+            return false;
+        }
+
+        return true;
+    }
+</script>
+
+</html>
